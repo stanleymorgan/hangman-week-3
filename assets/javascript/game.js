@@ -1,5 +1,5 @@
 var hangmanGame = {
-  //coachesArray: [saban, richt, meyer, miles]
+  
   computerChoice: "saban",
   playerGuesses: [],
   guessesLeft: 10,
@@ -48,15 +48,25 @@ var hangmanGame = {
       && this.correctGuesses[2]=== this.computerChoice.charAt(2)  && this.correctGuesses[3]=== this.computerChoice.charAt(3)
       && this.correctGuesses[4]=== this.computerChoice.charAt(4)){
       this.wins++;
+      // reset guessesLeft to 10
+      this.guessesLeft = 10;
+      // reset playerGuesses and correctGuesses to clear
+      this.playerGuesses = [];
+      this.correctGuesses = [];
+      var coachesArray = ["saban","richt", "meyer", "miles", "kelly", "jones", "smart"];
+      this.computerChoice = coachesArray[Math.floor(Math.random() * coachesArray.length)];
+
     }
     // see if player lost
     if(this.guessesLeft === 0){
       this.losses++;
       // reset guessesLeft to 10
-      //this.guessesLeft = 10;
+      this.guessesLeft = 10;
       // reset playerGuesses and correctGuesses to clear
-      //this.playerGuesses = [];
-      //this.correctGuesses = [];
+      this.playerGuesses = [];
+      this.correctGuesses = [];
+      var coachesArray = ["saban","richt", "meyer", "miles", "kelly", "jones", "smart"];
+      this.computerChoice = coachesArray[Math.floor(Math.random() * coachesArray.length)];
     }
   }
 }
@@ -70,27 +80,14 @@ document.onkeyup = function(event) {
                       "<p>Wins:  " + hangmanGame.wins + "</p>"+
                       "<p>Losses:  " + hangmanGame.losses + "</p>"+
                       "<p>Current Word:  " + hangmanGame.correctGuesses + "</p>"+
+                      
                       "<p>                    _ _ _ _ _ _    </p>"+
                       "<p>Guesses remaining: " + hangmanGame.guessesLeft + "</p>"+
                       "<p>Letters already guessed:  " + hangmanGame.playerGuesses + "</p>";
 
           // Injecting the HTML into "game" div and updating the game information 
           document.getElementById("game").innerHTML = html;
-   //   reset game if player wins or loses
-   //////if player wins                                  
-  // if(hangmanGame.correctGuesses[0]=== hangmanGame.computerChoice.charAt(0) && hangmanGame.correctGuesses[1]=== hangmanGame.computerChoice.charAt(1)
-    //  && hangmanGame.correctGuesses[2]=== hangmanGame.computerChoice.charAt(2)  && hangmanGame.correctGuesses[3]=== hangmanGame.computerChoice.charAt(3)
-   //   && hangmanGame.correctGuesses[4]=== hangmanGame.computerChoice.charAt(4)){
-        //hangmanGame.guessesLeft = 10;
-       //hangmanGame.playerGuesses = [];
-       //hangmanGame.correctGuesses = [];
-       //computerChoice = coachesArray[Math.floor(Math.random() * coachesArray.length)];
-  //  }
-    // reset if player lost
-   // if(hangmanGame.guessesLeft === 0){
-       //hangmanGame.guessesLeft = 10;
-       //hangmanGame.playerGuesses = [];
-       //hangmanGame.correctGuesses = [];
-       //computerChoice = coachesArray[Math.floor(Math.random() * coachesArray.length)];
-   // }       
+
+    
+   
 };
