@@ -26,18 +26,23 @@ var hangmanGame = {
       if(letterTheyChose === this.computerChoice.charAt(0)){
         // put letter in correct guesses array
         this.correctGuesses[0] = letterTheyChose;
+        //document.getElementById("1st").innerHTML = letterTheyChose;
       }
       if(letterTheyChose === this.computerChoice.charAt(1)){
         this.correctGuesses[1] = letterTheyChose;
+        //document.getElementById("2nd").innerHTML = this.correctGuesses[1];
       }
       if(letterTheyChose === this.computerChoice.charAt(2)){
         this.correctGuesses[2] = letterTheyChose;
+        //document.getElementById("3rd").innerHTML = this.correctGuesses[2];
       }
       if(letterTheyChose === this.computerChoice.charAt(3)){
         this.correctGuesses[3] = letterTheyChose;
+        //document.getElementById("4th").innerHTML = this.correctGuesses[3];
       }
       if(letterTheyChose === this.computerChoice.charAt(4)){
         this.correctGuesses[4] = letterTheyChose;
+        //document.getElementById("5th").innerHTML = this.correctGuesses[4];
       }
       // put letter guessed into playerGuesses array
       this.playerGuesses.push(letterTheyChose);
@@ -79,13 +84,13 @@ document.onkeyup = function(event) {
           var html = "<h2>Press any key to guess</h2>"+
                       "<p>Wins:  " + hangmanGame.wins + "</p>"+
                       "<p>Losses:  " + hangmanGame.losses + "</p>"+
-                      "<p>Current Word:  " + hangmanGame.correctGuesses + "</p>"+
+                      "<p>Current Word:  " + hangmanGame.correctGuesses.join(" ") + "</p>"+
                       
                       "<p>                    _ _ _ _ _ _    </p>"+
                       "<p>Guesses remaining: " + hangmanGame.guessesLeft + "</p>"+
                       "<p>Letters already guessed:  " + hangmanGame.playerGuesses + "</p>";
 
-          // Injecting the HTML into "game" div and updating the game information 
+           //Injecting the HTML into "game" div and updating the game information 
           document.getElementById("game").innerHTML = html;
 
     
